@@ -2,11 +2,13 @@ import logoEfood from '../../assets/imagesEfood/logo.png'
 import instagram from '../../assets/imagesEfood/instagram.png'
 import facebook from '../../assets/imagesEfood/facebook.png'
 import twitter from '../../assets/imagesEfood/twitter.png'
-import { Footer, LogoFooter, RedesSociais, PFooter } from './styled'
+
+// ⬇️ troque './styled' por './style'
+import { Footer, LogoFooter, RedesSociais, PFooter } from './styles'
 
 export const HomeFooter = () => {
   return (
-    <Footer className=".container">
+    <Footer className="container">
       <LogoFooter src={logoEfood} alt="" />
       <RedesSociais>
         <li>
@@ -20,9 +22,9 @@ export const HomeFooter = () => {
         </li>
       </RedesSociais>
       <PFooter>
-        A efood é uma pFooterlataforma para divulgação de estabelecimentos, a
+        A efood é uma plataforma para divulgação de estabelecimentos, a
         responsabilidade pela entrega, qualidade dos produtos é toda do
-        estabelecimento contratado.{' '}
+        estabelecimento contratado.
       </PFooter>
     </Footer>
   )

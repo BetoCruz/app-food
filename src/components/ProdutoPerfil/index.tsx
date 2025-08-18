@@ -1,3 +1,4 @@
+// components/ProdutoPerfil/index.tsx
 import {
   PerfilButton,
   PerfilParagrafo,
@@ -7,50 +8,65 @@ import {
 import { CardProdutoPerfil } from './styles'
 import img from '../../assets/imagesEfood/pratos/Hioki_Sushi.png'
 
+export type Product = {
+  id: number
+  name: string
+  price: number
+  image?: string
+  description?: string
+}
+
 type Props = {
   isActive: boolean
   onClose: () => void
   toggle?: () => void
-  goCart?: () => void
+  goCart?: (product: Product) => void
   setAtivarOverlay?: (value: boolean) => void
+  product?: Product
 }
+
 const ProdutoPerfil = ({
   isActive,
   onClose,
   toggle,
   goCart,
-  setAtivarOverlay
+  setAtivarOverlay,
+  product = {
+    id: 1,
+    name: 'Restaurante Japonês',
+    price: 60.9,
+    image: img,
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit...'
+  }
 }: Props) => {
   return (
     <CardProdutoPerfil isActive={isActive}>
       <CloseIcon className="close-icon" onClick={onClose}>
-        <p onClick={() => setAtivarOverlay && setAtivarOverlay(false)}>x</p>{' '}
+        <p onClick={() => setAtivarOverlay && setAtivarOverlay(false)}>x</p>
       </CloseIcon>
 
-      <img src={img} alt="" />
+      <img src={product.image || img} alt={product.name} />
       <div>
-        <PerfilTituloH2>Retaurante Japones</PerfilTituloH2>
-        <PerfilParagrafo>
-          {' '}
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa fugiat
-          alias hic aspernatur natus ipsa eum repudiandae qui dolorum, expedita
-          sint, illum eveniet ut, rem vero sunt architecto? Soluta, nulla.
-        </PerfilParagrafo>
+        <PerfilTituloH2>{product.name}</PerfilTituloH2>
+        <PerfilParagrafo>{product.description}</PerfilParagrafo>
+
         {isActive ? (
-          <>
-            <PerfilButton onClick={goCart} className="perfil-button">
-              Adicionar ao Carrinho - R$60,90
-            </PerfilButton>
-          </>
+          <PerfilButton
+            onClick={() => {
+              goCart && goCart(product)
+              setAtivarOverlay && setAtivarOverlay(true)
+            }}
+            className="perfil-button"
+          >
+            Adicionar ao Carrinho - R${' '}
+            {product.price.toFixed(2).replace('.', ',')}
+          </PerfilButton>
         ) : (
-          <>
-            <PerfilButton onClick={toggle} className="perfil-button">
-              <p onClick={() => setAtivarOverlay && setAtivarOverlay(true)}>
-                {' '}
-                Mais detalhes{' '}
-              </p>
-            </PerfilButton>
-          </>
+          <PerfilButton onClick={toggle} className="perfil-button">
+            <p onClick={() => setAtivarOverlay && setAtivarOverlay(true)}>
+              Mais detalhes
+            </p>
+          </PerfilButton>
         )}
       </div>
     </CardProdutoPerfil>
