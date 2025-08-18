@@ -1,38 +1,107 @@
-// containers/ListaDeProdutos/index.tsx
-import ProdutoPerfil, { Product } from '../../components/ProdutoPerfil'
+import { ListaContainer } from './styles'
+import Produto from '../../components/Produto'
+import ProdutoPerfil from '../../components/ProdutoPerfil'
+import hiokiSushi from '../../assets/imagesEfood/pratos/Hioki_Sushi.png'
+import { useState } from 'react'
 
-type Props = {
-  onAddToCart: (product: Product) => void
-  setAtivarOverlay: (v: boolean) => void
-  home?: boolean
-  ishome?: boolean
-}
-
-const produtos: Product[] = [
-  { id: 1, name: 'Hioki Sushi', price: 60.9 },
-  { id: 2, name: 'Burger Artesanal', price: 28.0 },
-  { id: 3, name: 'Cerveja IPA', price: 18.5 }
+const dataBase = [
+  {
+    id: 1,
+    title: 'Hioki Sushi',
+    img: { hiokiSushi },
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit '
+  },
+  {
+    id: 2,
+    title: 'Hioki Sushi',
+    img: { hiokiSushi },
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit '
+  },
+  {
+    id: 3,
+    title: 'Hioki Sushi',
+    img: { hiokiSushi },
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit '
+  },
+  {
+    id: 4,
+    title: 'Hioki Sushi',
+    img: { hiokiSushi },
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit '
+  }
 ]
 
-// Renderiza um grid 3 colunas com N cards
-const ListaDeProdutos = ({ onAddToCart, setAtivarOverlay }: Props) => {
+type Props = {
+  home?: boolean
+  ishome?: boolean
+  setAtivarOverlay?: (value: boolean) => void
+}
+const ListaDeProdutos = ({ home, ishome, setAtivarOverlay }: Props) => {
+  const [DestacarCard, setDestacarCard] = useState(false)
+  const [showCart, setShowCart] = useState(false)
+
   return (
-    <div
-      style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 16 }}
-    >
-      {produtos.map((p) => (
-        <ProdutoPerfil
-          key={p.id}
-          isActive={true}
-          onClose={() => setAtivarOverlay(false)}
-          toggle={() => setAtivarOverlay(true)}
-          setAtivarOverlay={setAtivarOverlay}
-          goCart={(prod) => onAddToCart(prod)} // <- liga no handler da página
-          product={p}
-        />
-      ))}
+    <div className="container">
+      <ListaContainer ishome={ishome}>
+        <>
+          {home ? (
+            <>
+              <Produto />
+              <Produto />
+              <Produto />
+              <Produto />
+              <Produto />
+              <Produto />
+            </>
+          ) : (
+            <>
+              <ProdutoPerfil
+                setAtivarOverlay={setAtivarOverlay}
+                goCart={() => setShowCart(true)}
+                onClose={() => setDestacarCard(false)}
+                isActive={DestacarCard}
+                toggle={() => setDestacarCard(true)}
+              />
+              <ProdutoPerfil
+                setAtivarOverlay={setAtivarOverlay}
+                goCart={() => setShowCart(true)}
+                onClose={() => setDestacarCard(false)}
+                isActive={false}
+                toggle={() => setDestacarCard(true)}
+              />
+              <ProdutoPerfil
+                setAtivarOverlay={setAtivarOverlay}
+                goCart={() => setShowCart(true)}
+                onClose={() => setDestacarCard(false)}
+                isActive={false}
+                toggle={() => setDestacarCard(true)}
+              />
+              <ProdutoPerfil
+                setAtivarOverlay={setAtivarOverlay}
+                goCart={() => setShowCart(true)}
+                onClose={() => setDestacarCard(false)}
+                isActive={false}
+                toggle={() => setDestacarCard(true)}
+              />
+              <ProdutoPerfil
+                setAtivarOverlay={setAtivarOverlay}
+                goCart={() => setShowCart(true)}
+                onClose={() => setDestacarCard(false)}
+                isActive={false}
+                toggle={() => setDestacarCard(true)}
+              />
+              <ProdutoPerfil
+                setAtivarOverlay={setAtivarOverlay}
+                goCart={() => setShowCart(true)}
+                onClose={() => setDestacarCard(false)}
+                isActive={false}
+                toggle={() => setDestacarCard(true)}
+              />
+            </>
+          )}
+        </>
+      </ListaContainer>
     </div>
   )
 }
-
 export default ListaDeProdutos
