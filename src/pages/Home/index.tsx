@@ -1,13 +1,15 @@
-import Header from '../../components/Header'
-import ListaDeProdutos from '../../containers/ListaDeProdutos'
-import HomeFooter from '../../components/HomeFooter'
+// Update the import path if necessary, for example:
+import Header from '../../structure/components/Header'
+import RestaurantsList from '../../structure/containers/RestaurantsList'
+import Footer from '../../structure/components/Footer'
 
-const Home = () => (
-  <>
-    <Header home={true} />
-    <ListaDeProdutos home={true} ishome={true} />
-    <HomeFooter />
-  </>
-)
-
+const Home = () => {
+  return (
+    <div>
+      <Header />
+      <RestaurantsList />
+      <Footer />
+    </div>
+  )
+}
 export default Home
