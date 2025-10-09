@@ -7,15 +7,15 @@ type CartState = {
 
 const initialState: CartState = {
   items: [
-    {
-      id: 1,
-      name: 'Produto 1',
-      price: 10.99,
-      quantity: 2,
-      description: 'Descrição do produto 1',
-      image: 'https://via.placeholder.com/150',
-      classification: 4.5
-    }
+    // {
+    //   id: 1,
+    //   name: 'Produto 1',
+    //   price: 10.99,
+    //   quantity: 2,
+    //   description: 'Descrição do produto 1',
+    //   image: 'https://via.placeholder.com/150',
+    //   classification: 4.5
+    // }
     // {
     //   id: 2,
     //   name: 'Produto 2',

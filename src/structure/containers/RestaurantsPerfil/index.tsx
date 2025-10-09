@@ -3,7 +3,11 @@ import FoodItem from '../../../models/FoodItem'
 import Cart from '../../components/Cart'
 import pizza from '../../../assets/imagesEfood/pratos/pizza_1.png'
 
-import { ListaDeElementosBlock, ListaDeElementosContainer } from './styles'
+import {
+  ListaDeElementosBlock,
+  ListaDeElementosContainer,
+  ModalOfCart
+} from './styles'
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { addItem } from '../../../store/reducers/cart'
@@ -81,6 +85,7 @@ const dataBase: CartState = {
 
 const RestaurantsPerfil = () => {
   const [isActive, setIsActive] = useState(false)
+  const [activeModal, setActiveModal] = useState(false)
   const dispatch = useDispatch()
 
   const putOnCart = (item: FoodItem) => {
@@ -100,7 +105,6 @@ const RestaurantsPerfil = () => {
   return (
     <ListaDeElementosBlock className="container">
       <div className="container">
-        <h1>Lista de Elementos</h1>
         <ListaDeElementosContainer>
           {dataBase.items.map((item) => (
             <CardFood
@@ -116,8 +120,9 @@ const RestaurantsPerfil = () => {
             />
           ))}
         </ListaDeElementosContainer>
-        <Cart isActive={isActive} />
+        <Cart activeModal={setActiveModal} isActive={isActive} />
       </div>
+      <ModalOfCart className={activeModal ? 'visivel' : ''}></ModalOfCart>
     </ListaDeElementosBlock>
   )
 }

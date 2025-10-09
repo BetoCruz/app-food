@@ -1,19 +1,14 @@
 import styled from 'styled-components'
-// import type { Props } from './index'
-
-// type Props = {
-//   isHome?: boolean
-// }
+import { cores } from '../../../styles/styles'
 
 export const ListaDeRestaurantesBlock = styled.div`
   width: 100%;
-  background-color: #97d86cff;
+  background-color: ${cores.begeClaro};
 `
 export const ListaDeRestaurantesContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   row-gap: 24px;
-  background-color: #efe3adff;
-  border: 2px solid #fd0000ff;
+  background-color: ${cores.begeClaro};
 `

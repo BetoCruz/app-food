@@ -1,5 +1,4 @@
 import FoodItemClass from '../../../../models/FoodItem'
-// import imgJp from '../../../assets/imagesEfood/pratos/Hioki_Sushi.png'
 import { CardRestauranteContainer } from './styles'
 import { Link } from 'react-router-dom'
 

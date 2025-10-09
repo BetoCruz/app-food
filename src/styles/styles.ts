@@ -27,11 +27,6 @@ export const GlobalCss = createGlobalStyle`
     list-style: none;
   }
 
-  body{
-    // color: ${cores.branca};
-    // padding-top: 40px;
-  }
-
   .container {
     max-width: 1024px;
     width: 100%;

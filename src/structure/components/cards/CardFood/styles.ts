@@ -9,7 +9,9 @@ export const CardFoodContainer = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 16px;
   margin: 16px;
-  background-color: #e76c6cff;
+  // background-color: #e76c6cff;
+  background-color: ${cores.salmon};
+  color: ${cores.bege};
 
   img {
     width: 100%;
@@ -21,25 +23,29 @@ export const CardFoodContainer = styled.div`
   h1 {
     font-size: 1.5rem;
     margin-bottom: 8px;
-    color: #333;
+    // color: #333;
   }
 
   p {
     font-size: 1rem;
-    color: #666;
+    // color: #666666ff;
     margin-bottom: 16px;
   }
 
   button {
-    background-color: #007bff;
+    // background-color: #fefefeff;
+    background-color: ${cores.bege};
     color: white;
     border: none;
     padding: 10px;
     border-radius: 4px;
     cursor: pointer;
+    color: ${cores.salmon};
+    font-size: 14px;
+    font-weight: bold;
 
     &:hover {
-      background-color: #007bffff;
+      background-color: #faf4f4ff;
     }
   }
 `

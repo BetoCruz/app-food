@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { cores } from '../../../../styles/styles'
 
 export const CardRestauranteContainer = styled.div`
   display: block;
@@ -8,6 +9,7 @@ export const CardRestauranteContainer = styled.div`
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 16px;
   margin: 16px;
+  color: ${cores.salmon};
 
   img {
     width: 100%;
@@ -19,17 +21,17 @@ export const CardRestauranteContainer = styled.div`
   h1 {
     font-size: 1.5rem;
     margin-bottom: 8px;
-    color: #333;
+    // color: #333;
   }
 
   p {
     font-size: 1rem;
-    color: #666;
+    // color: #666;
     margin-bottom: 16px;
   }
 
   button {
-    background-color: #007bff;
+    background-color: ${cores.salmon};
     color: white;
     border: none;
     padding: 10px;
@@ -37,7 +39,7 @@ export const CardRestauranteContainer = styled.div`
     cursor: pointer;
 
     &:hover {
-      background-color: #0056b3;
+      background-color: #fb8080ff;
     }
   }
 `

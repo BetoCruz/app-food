@@ -1,6 +1,6 @@
 import CardRestaurants from '../../components/cards/CardRestaurants'
 import FoodItemClass from '../../../models/FoodItem'
-
+import imgloja from '../../../assets/imagesEfood/pratos/la_dolce_vita_trattoria_1.png'
 import {
   ListaDeRestaurantesBlock,
   ListaDeRestaurantesContainer
@@ -19,7 +19,7 @@ const dataBase: CartState = {
       quantity: 2,
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      image: 'https://placehold.co/471x217/',
+      image: imgloja,
       classification: 4.5
     },
     {
@@ -29,7 +29,7 @@ const dataBase: CartState = {
       quantity: 1,
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      image: 'https://placehold.co/471x217/',
+      image: imgloja,
       classification: 3.8
     },
     {
@@ -39,7 +39,7 @@ const dataBase: CartState = {
       quantity: 3,
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      image: 'https://placehold.co/471x217/',
+      image: imgloja,
       classification: 4.2
     },
     {
@@ -49,7 +49,7 @@ const dataBase: CartState = {
       quantity: 3,
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      image: 'https://placehold.co/471x217/',
+      image: imgloja,
       classification: 4.2
     },
     {
@@ -59,7 +59,7 @@ const dataBase: CartState = {
       quantity: 3,
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      image: 'https://placehold.co/471x217/',
+      image: imgloja,
       classification: 4.2
     },
     {
@@ -69,7 +69,7 @@ const dataBase: CartState = {
       quantity: 3,
       description:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      image: 'https://placehold.co/471x217/',
+      image: imgloja,
       classification: 4.2
     }
   ]
@@ -79,7 +79,6 @@ const RestaurantsList = () => {
   return (
     <ListaDeRestaurantesBlock className="container">
       <div className="container">
-        <h1>Lista de Elemento!!!</h1>
         <ListaDeRestaurantesContainer>
           {dataBase.items.map((item) => (
             <CardRestaurants

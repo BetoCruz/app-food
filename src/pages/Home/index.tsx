@@ -6,7 +6,7 @@ import Footer from '../../structure/components/Footer'
 const Home = () => {
   return (
     <div>
-      <Header />
+      <Header isHome={true} />
       <RestaurantsList />
       <Footer />
     </div>

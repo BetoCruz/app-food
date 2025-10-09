@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import FoodItemClass from '../../../../models/FoodItem'
 import { CardFoodContainer, ModalContent, ModalOverlay } from './styles'
@@ -28,7 +29,10 @@ const CardFood = ({
     <>
       <CardFoodContainer>
         <div>
-          <img src={image} alt="{name}" />
+          <Link to={'/'}>
+            <img src={image} alt="{name}" />
+          </Link>
+
           <span>Destaque da semana</span>
           <span>Japonesa</span>
         </div>

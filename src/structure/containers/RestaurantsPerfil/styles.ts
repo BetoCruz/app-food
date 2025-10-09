@@ -1,8 +1,9 @@
 import styled from 'styled-components'
+import { cores } from '../../../styles/styles'
 
 export const ListaDeElementosBlock = styled.div`
   width: 100%;
-  background-color: #97d86cff;
+  background-color: ${cores.begeClaro};
 `
 export const ListaDeElementosContainer = styled.div`
   display: grid;
@@ -11,7 +12,17 @@ export const ListaDeElementosContainer = styled.div`
   row-gap: 24px;
   padding: 16px;
   position: relative;
-
-  // background-color: #d8c46cff;
-  // border: 2px solid #126524ff;
+`
+export const ModalOfCart = styled.div`
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  &.visivel {
+    display: flex;
+    z-index: 1;
+  }
 `

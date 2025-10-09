@@ -5,7 +5,7 @@ import Footer from '../../structure/components/Footer'
 const PerfilRestaurantes = () => {
   return (
     <>
-      <Header />
+      <Header isHome={false} />
       <RestaurantsPerfil />
       <Footer />
     </>
