@@ -1,13 +1,10 @@
 import { FoodHeader, HeaderBlock, HeaderContainer, HeaderLink } from './styles'
 import imgLogo from '../../../assets/imagesEfood/logo.png'
-import { Link } from 'react-router-dom'
-import { useState } from 'react'
 type Props = {
   isHome?: boolean
 }
 
 const Header = ({ isHome }: Props) => {
-  // const [isHome, setIsHome] = useState(false)
   return (
     <HeaderBlock className="container">
       <div className="container">
