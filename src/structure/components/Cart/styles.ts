@@ -145,16 +145,3 @@ export const FinalButton = styled(Link)`
   border: none;
   border-radius: 4px;
 `
-// export const Modal = styled.div`
-//   // display: none;
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   background-color: rbga(0, 0, 0, 0.7);
-
-//   &.visivel {
-//     display: block;
-//   }
-// `
