@@ -14,7 +14,6 @@ const CardRestaurants = ({
   return (
     <CardRestauranteContainer>
       <div>
-        {/* <img src="https://placehold.co/471x217/" alt="{name}" /> */}
         <img src={image} alt="{name}" />
         <span>Destaque da semana</span>
         <span>Japonesa</span>

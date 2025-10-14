@@ -7,7 +7,6 @@ import {
   Form,
   Final,
   FinalButton
-  // Modal
 } from './styles'
 import lataDeLixo from '../../../assets/imagesEfood/lata_de_lixo.png'
 import { RootReducer } from '../../../store/index'
