@@ -46,6 +46,7 @@ const RestaurantsPerfil = ({ headerActiveCart, comidas }: Props) => {
         <ListaDeElementosContainer>
           {comidas?.cardapio?.map((item) => (
             <CardFood
+              onOffCart={activeCart}
               putOnCart={putOnCart}
               setIsActive={setIsActive}
               key={item.id}
@@ -59,10 +60,10 @@ const RestaurantsPerfil = ({ headerActiveCart, comidas }: Props) => {
           ))}
         </ListaDeElementosContainer>
         <Cart
+          toggleCart={activeCart}
           toggleIsActive={setIsActive}
           activeModal={setActiveModal}
           isActive={isActive}
-          onOffCart={activeCart}
         />
       </div>
       <ModalOfCart

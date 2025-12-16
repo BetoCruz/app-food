@@ -42,11 +42,11 @@ const Header = (props: Props) => {
                 <li>
                   <HeaderLink
                     to="#"
-                    onClick={() => {
-                      if (props.toggleHeaderCart) {
-                        props.toggleHeaderCart(true)
-                      }
-                    }}
+                    // onClick={() => {
+                    //   if (props.toggleHeaderCart) {
+                    //     props.toggleHeaderCart(true)
+                    //   }
+                    // }}
                   >
                     {' '}
                     {items.length} produto(s) no carrinho

@@ -1,11 +1,13 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { CardFoodContainer, ModalContent, ModalOverlay } from './styles'
 import { CardapioItem } from '../../../../services/api'
 import { CartItem } from '../../../../store/reducers/cart'
+import { on } from 'events'
 type Props = CardapioItem & {
   setIsActive: (value: boolean) => void
   putOnCart: (value: CartItem) => void
+  onOffCart: boolean
 }
 
 const CardFood = ({
@@ -16,14 +18,18 @@ const CardFood = ({
   descricao,
   preco,
   foto,
-  porcao
+  porcao,
+  onOffCart
 }: Props) => {
   const [modal, setModal] = useState(false)
   const [modalContent, setModalContent] = useState(false)
-
+  const [onCart, setOnCart] = useState<boolean>(onOffCart)
   const closeModal = () => {
     setModal(false)
   }
+  useEffect(() => {
+    setOnCart(onOffCart)
+  }, [onOffCart])
 
   return (
     <>
@@ -44,7 +50,7 @@ const CardFood = ({
         </button>
       </CardFoodContainer>
 
-      <ModalOverlay className={modal ? 'visivel' : ''}>
+      <ModalOverlay className={modal || onCart ? 'visivel' : ''}>
         <div
           onClick={() => {
             closeModal(), setIsActive(false)

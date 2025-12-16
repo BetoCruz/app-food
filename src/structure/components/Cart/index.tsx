@@ -14,24 +14,29 @@ import {
 import lataDeLixo from '../../../assets/imagesEfood/lata_de_lixo.png'
 import { RootReducer } from '../../../store/index'
 import { useSelector } from 'react-redux'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { clearCart, removeItem } from '../../../store/reducers/cart'
 
 export type Props = {
   isActive?: boolean
-  onOffCart: boolean
   activeModal: (value: boolean) => void
   toggleIsActive: (value: boolean) => void
+  toggleCart: boolean
 }
 
-const Cart = ({ isActive, onOffCart, activeModal, toggleIsActive }: Props) => {
+const Cart = ({ isActive, toggleCart }: Props) => {
   const { items } = useSelector((state: RootReducer) => state.cart)
   const [start, setStart] = useState(true)
   const [order, setOrder] = useState(false)
   const [delivery, setDelivery] = useState(false)
   const [conclusion, setConclusion] = useState(false)
+  const [offOnCart, setOffOnCart] = useState<boolean>(toggleCart)
   const dispatch = useDispatch()
+
+  useEffect(() => {
+    setOffOnCart(toggleCart)
+  }, [toggleCart])
 
   const CleanShoppingCart = () => {
     dispatch(clearCart())
@@ -50,7 +55,7 @@ const Cart = ({ isActive, onOffCart, activeModal, toggleIsActive }: Props) => {
   return (
     <>
       {/* <OverlayCart isActive={isActive} onClick={() => toggleIsActive(false)} /> */}
-      <CartContainer isActive={isActive}>
+      <CartContainer isActive={isActive} className={offOnCart ? 'visivel' : ''}>
         {start && (
           <>
             <div>

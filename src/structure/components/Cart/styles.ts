@@ -5,29 +5,30 @@ import type { Props } from './index'
 
 type stylesProps = {
   isActive: Props['isActive']
-  onOffCart?: Props['onOffCart']
+  // toggleCart?: Props['toggleCart']
 }
 
-export const OverlayCart = styled.div<stylesProps>`
-  display: ${({ isActive, onOffCart }) =>
-    isActive || onOffCart ? 'block' : 'none'};
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-  background: rgba(216, 209, 75, 0.6);
-`
+// export const OverlayCart = styled.div<stylesProps>`
+//   display: ${({ isActive }) => (isActive ? 'block' : 'none')};
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   z-index: 1;
+//   width: 100%;
+//   height: 100%;
+//   background: rgba(45, 44, 22, 0.6);
+// `
 
 export const CartContainer = styled.aside<stylesProps>`
+  .visivel {
+    display: flex;
+  }
   position: fixed;
   bottom: 0;
   right: 0;
   z-index: 2;
 
-  display: ${({ isActive, onOffCart }) =>
-    isActive || onOffCart ? 'block' : 'none'};
+  display: ${({ isActive }) => (isActive ? 'block' : 'none')};
 
   width: 360px;
   height: 100vh;
