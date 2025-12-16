@@ -8,9 +8,10 @@ export const ListaDeElementosBlock = styled.div`
 export const ListaDeElementosContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: auto;
-  row-gap: 24px;
-  padding: 16px;
+  gap: 40px;
+  row-gap: 40px;
+  padding-top: 80px;
+  padding-bottom: 160px;
   position: relative;
 `
 export const ModalOfCart = styled.div`

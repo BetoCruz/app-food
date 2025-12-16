@@ -6,7 +6,7 @@ import twitter from '../../../assets/imagesEfood/twitter.png'
 
 const Footer = () => {
   return (
-    <BlockFooter className="container">
+    <BlockFooter>
       <div className="container">
         <img src={imgLogo} alt="" />
       </div>

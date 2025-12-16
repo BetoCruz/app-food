@@ -1,25 +1,25 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 
-import FoodItemClass from '../../../../models/FoodItem'
 import { CardFoodContainer, ModalContent, ModalOverlay } from './styles'
-
-type Props = FoodItemClass & {
+import { CardapioItem } from '../../../../services/api'
+import { CartItem } from '../../../../store/reducers/cart'
+type Props = CardapioItem & {
   setIsActive: (value: boolean) => void
-  putOnCart: (value: FoodItemClass) => void
+  putOnCart: (value: CartItem) => void
 }
 
 const CardFood = ({
   setIsActive,
   putOnCart,
   id,
-  name,
-  description,
-  price,
-  image,
-  classification
+  nome,
+  descricao,
+  preco,
+  foto,
+  porcao
 }: Props) => {
   const [modal, setModal] = useState(false)
+  const [modalContent, setModalContent] = useState(false)
 
   const closeModal = () => {
     setModal(false)
@@ -29,54 +29,49 @@ const CardFood = ({
     <>
       <CardFoodContainer>
         <div>
-          <Link to={'/'}>
-            <img src={image} alt="{name}" />
-          </Link>
-
-          <span>Destaque da semana</span>
-          <span>Japonesa</span>
+          <img src={foto} alt="{name}" />
         </div>
         <div>
-          <h1> {name} </h1>
-          <span>{classification}</span>
+          <h1> {nome} </h1>
         </div>
-        <p>
-          {description}
-          Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis
-          frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega
-          rápida, embalagens cuidadosas e qualidade garantida.Experimente o
-          Japão sem sair do lar com nosso delivery!
-        </p>
-        <button onClick={() => setModal(true)}>Saiba Mais</button>
+        <p>{descricao}</p>
+        <button
+          onClick={() => {
+            setModal(true), setModalContent(true)
+          }}
+        >
+          Adicionar ao carrinho
+        </button>
       </CardFoodContainer>
 
       <ModalOverlay className={modal ? 'visivel' : ''}>
         <div
           onClick={() => {
-            closeModal()
+            closeModal(), setIsActive(false)
           }}
           className="overlay"
         ></div>
-        <ModalContent className="container-modal">
-          <img src={image} alt="" />
+        <ModalContent className={modalContent ? 'visivel' : ''}>
+          <img src={foto} alt="" />
           <div>
-            <h2>{name}</h2>
-            <p>{description}</p> <br />
+            <h2>{nome}</h2>
+            <p>{descricao}</p> <br />
+            <p> Serve: de {porcao}g</p>
             <button
               onClick={() => {
                 setIsActive(true),
-                  setModal(false),
+                  setModal(true),
+                  setModalContent(false),
+                  // setModal(false),
                   putOnCart({
                     id,
-                    name,
-                    description,
-                    price,
-                    image,
-                    classification
+                    nome,
+                    preco,
+                    foto
                   })
               }}
             >
-              Adicionar ao carrinho - R$ {price}
+              Adicionar ao carrinho - R$ {preco}
             </button>
           </div>
         </ModalContent>

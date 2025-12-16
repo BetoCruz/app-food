@@ -2,6 +2,7 @@
 import Header from '../../structure/components/Header'
 import RestaurantsList from '../../structure/containers/RestaurantsList'
 import Footer from '../../structure/components/Footer'
+// import { useGetFeaturedRestaurantsQuery } from '../../services/api'
 
 const Home = () => {
   return (

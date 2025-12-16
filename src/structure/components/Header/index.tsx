@@ -1,26 +1,38 @@
 import { FoodHeader, HeaderBlock, HeaderContainer, HeaderLink } from './styles'
 import imgLogo from '../../../assets/imagesEfood/logo.png'
-type Props = {
-  isHome?: boolean
-}
+import { useSelector } from 'react-redux'
+import { RootReducer } from '../../../store'
+import { RestInfos } from '../../../services/api'
+export type Props =
+  | {
+      isHome: true
+      comidas?: RestInfos
+      toggleHeaderCart?: never
+    }
+  | {
+      isHome?: false
+      comidas?: RestInfos
+      toggleHeaderCart: (value: boolean) => void
+    }
 
-const Header = ({ isHome }: Props) => {
+const Header = (props: Props) => {
+  const { items } = useSelector((state: RootReducer) => state.cart)
   return (
-    <HeaderBlock className="container">
-      <div className="container">
-        {isHome ? (
+    <HeaderBlock>
+      <>
+        {props.isHome ? (
           <HeaderContainer className="container">
             <div>
               <img src={imgLogo} alt="" />
             </div>
             <div>
-              <p>Viva experiências gastronômicasno conforto da sua casa</p>
+              <p>Viva experiências gastronômicas no conforto da sua casa</p>
             </div>
           </HeaderContainer>
         ) : (
           <FoodHeader>
             <header>
-              <ul>
+              <ul className="container">
                 <li>
                   <HeaderLink to="/">Restaurantes</HeaderLink>
                 </li>
@@ -28,21 +40,42 @@ const Header = ({ isHome }: Props) => {
                   <img src={imgLogo} alt="" />
                 </li>
                 <li>
-                  <HeaderLink to="/about">0 Produtos nocarrinho</HeaderLink>
+                  <HeaderLink
+                    to="#"
+                    onClick={() => {
+                      if (props.toggleHeaderCart) {
+                        props.toggleHeaderCart(true)
+                      }
+                    }}
+                  >
+                    {' '}
+                    {items.length} produto(s) no carrinho
+                  </HeaderLink>
                 </li>
               </ul>
             </header>
-            <section>
-              <span>
-                <h2>Italiana</h2>
-              </span>
-              <span>
-                <h3>La Doce Vita Trattoria</h3>
-              </span>
+            <section
+              style={{
+                backgroundImage: props.comidas?.capa
+                  ? `url(${props.comidas.capa})`
+                  : undefined,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+            >
+              {/* <section backgroundImage={comidas?.capa}> */}
+              <div className="container">
+                <span>
+                  <h2>{props.comidas?.tipo}</h2>
+                </span>
+                <span>
+                  <h3>{props.comidas?.titulo}</h3>
+                </span>
+              </div>
             </section>
           </FoodHeader>
         )}
-      </div>
+      </>
     </HeaderBlock>
   )
 }

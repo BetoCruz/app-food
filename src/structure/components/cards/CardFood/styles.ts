@@ -2,43 +2,45 @@ import styled from 'styled-components'
 import { cores } from '../../../../styles/styles'
 
 export const CardFoodContainer = styled.div`
+  font-family: 'Roboto', sans-serif;
+  width: 320px;
+  height: 338px;
   display: flex;
   flex-direction: column;
-  background-color: #fff;
-  border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 16px;
-  margin: 16px;
-  // background-color: #e76c6cff;
+  padding: 8px;
   background-color: ${cores.salmon};
   color: ${cores.bege};
 
   img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 12px;
+    width: 304px;
+    height: 167px;
+    object-fit: cover;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-weight: 900;
+    font-size: 1rem;
     margin-bottom: 8px;
-    // color: #333;
+    padding-left: 6px;
   }
 
   p {
-    font-size: 1rem;
-    // color: #666666ff;
-    margin-bottom: 16px;
+    font-weight: 400;
+    font-size: 14px;
+    padding-left: 6px;
+    margin-bottom: 8px;
+    line-height: 1.6rem;
+    overflow: hidden;
   }
 
   button {
-    // background-color: #fefefeff;
+    font-weight: 700;
     background-color: ${cores.bege};
     color: white;
     border: none;
     padding: 10px;
-    border-radius: 4px;
+    // border-radius: 4px;
     cursor: pointer;
     color: ${cores.salmon};
     font-size: 14px;
@@ -56,7 +58,6 @@ export const ModalOverlay = styled.div`
   width: 100%;
   height: 100%;
   z-index: 1;
-  border: 5px solid red;
 
   display: none;
   align-items: center;
@@ -79,47 +80,55 @@ export const ModalOverlay = styled.div`
 export const ModalContent = styled.div`
   z-index: 1;
   position: relative;
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
-
   width: 1024px;
   height: 344px;
   background-color: ${cores.salmon};
+
+  &.visivel {
+    display: flex;
+  }
 
   img {
     width: 280px;
     height: 280px;
     object-fit: cover;
     margin: 24px;
-
-
   }
 
   > div {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 14px;
+
+
     padding: 16px;
     color: ${cores.branca};
 
     h2 {
-      font-size: 1.5rem;
+      font-size: 18px;
       margin-bottom: 8px;
     }
     p {
-      font-size: 1rem;
+      font-size: 14px;
       margin-bottom: 16px;
     }
 
     button {
-      margin-top: 16px;
       background-color: ${cores.bege};
-      text-decoration: none;
-      font-size: 1rem;
-      padding: 8px;
+      margin-top: 16px;
+      padding: 4px;
       border: none;
-      border-radius: 4px;
+      text-decoration: none;
       cursor: pointer;
       color: ${cores.salmon};
+      font-family: 'Roboto', sans-serif;
+      font-weight: bold;
+      font-size: 14px;
     } ;
     }
   }

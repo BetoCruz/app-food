@@ -15,7 +15,10 @@ export const HeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+
+  font-family: 'Roboto', sans-serif;
+  font-weight: 900;
 
   > div:nth-child(2) {
     width: 70%;
@@ -26,8 +29,7 @@ export const HeaderContainer = styled.div`
     text-align: center;
   }
 `
-export const FoodHeader = styled.header`
-
+export const FoodHeader = styled.header<{ backgroundImage?: string }>`
   header {
     height: 186px;
     width: 100%;
@@ -36,23 +38,21 @@ export const FoodHeader = styled.header`
   ul {
     height: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     list-style: none;
-  }
+    // padding: 0 10px;
+    }
 
   section {
     height: 280px;
-    background-image: url(${imgHeaderHero});
+    width: 100%;
+    background-image: url(${(props) => props.backgroundImage});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    &::after {
+      &::after {
       position: absolute;
       content: '';
       width: 100%;
@@ -62,26 +62,30 @@ export const FoodHeader = styled.header`
       background-color: rgba(0, 0, 0, 0.5);
     }
 
+    > div {
+      height: 280px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
   span {
     z-index: 1;
     position: relative;
     color: white;
     font-family: 'Roboto', sans-serif;
-    margin: 24px 0 24px 24px;
+    margin: 24px 0 24px 0;
 
     & h2 {
-      font-size: 24px;
+      font-size: 32px;
       font-weight: 100;
     }
 
     & h3 {
-      font-size: 24px;
+      font-size: 32px;
       font-weight: 700;
     }
   }
-
-
-
 `
 export const HeaderLink = styled(Link)`
   text-decoration: none;
