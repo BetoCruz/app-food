@@ -8,7 +8,6 @@ import { useState } from 'react'
 const PerfilRestaurantes = () => {
   const { id } = useParams()
   const { data: comidas } = useGetFeaturedCardapioQuery(id!)
-  console.log(comidas)
   const [toggleHeaderCart, setToggleHeaderCart] = useState(false)
 
   return (

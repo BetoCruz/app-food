@@ -9,14 +9,15 @@ import {
   FinalButton,
   DivButtons,
   CreditCardNumberCvv,
-  CreditCarMonthYear
+  CreditCarMonthYear,
+  OverlayCart
 } from './styles'
 import lataDeLixo from '../../../assets/imagesEfood/lata_de_lixo.png'
 import { RootReducer } from '../../../store/index'
 import { useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { clearCart, removeItem } from '../../../store/reducers/cart'
+import { clearCart, removeItem, close } from '../../../store/reducers/cart'
 
 export type Props = {
   isActive?: boolean
@@ -26,7 +27,7 @@ export type Props = {
 }
 
 const Cart = ({ isActive, toggleCart }: Props) => {
-  const { items } = useSelector((state: RootReducer) => state.cart)
+  const { items, isOpen } = useSelector((state: RootReducer) => state.cart)
   const [start, setStart] = useState(true)
   const [order, setOrder] = useState(false)
   const [delivery, setDelivery] = useState(false)
@@ -48,14 +49,29 @@ const Cart = ({ isActive, toggleCart }: Props) => {
     }, 0)
   }
 
+  const formatCurrencyBRL = (Value: number) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL',
+      minimumFractionDigits: 2
+    }).format(Value)
+  }
+
+  const closeCart = () => {
+    dispatch(close())
+  }
+
   const removeItemCart = (id: number) => {
     dispatch(removeItem(id))
   }
 
   return (
     <>
-      {/* <OverlayCart isActive={isActive} onClick={() => toggleIsActive(false)} /> */}
-      <CartContainer isActive={isActive} className={offOnCart ? 'visivel' : ''}>
+      <OverlayCart isActive={isOpen} onClick={closeCart} />
+      <CartContainer
+        isActive={isActive || isOpen}
+        className={offOnCart ? 'visivel' : ''}
+      >
         {start && (
           <>
             <div>
@@ -64,7 +80,8 @@ const Cart = ({ isActive, toggleCart }: Props) => {
                   <img src={item.foto} alt="" />
                   <CardItemTitle>
                     <h2>{item.nome}</h2>
-                    <h3>{item.preco}</h3>
+                    {/* <h3>{item.preco}</h3> */}
+                    <h3>{formatCurrencyBRL(item.preco || 0)}</h3>
                   </CardItemTitle>
                   <img
                     onClick={() => removeItemCart(item.id!)}
@@ -78,7 +95,7 @@ const Cart = ({ isActive, toggleCart }: Props) => {
               <TotalValueContainer>
                 <div>
                   <h3>Valor total</h3>
-                  <span>{`R$ ${TotalValue()}`}</span>
+                  <span>{`R$ ${formatCurrencyBRL(TotalValue())}`}</span>
                 </div>
                 <Button
                   onClick={() => {

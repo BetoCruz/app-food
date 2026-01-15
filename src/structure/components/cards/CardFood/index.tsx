@@ -3,11 +3,19 @@ import { useEffect, useState } from 'react'
 import { CardFoodContainer, ModalContent, ModalOverlay } from './styles'
 import { CardapioItem } from '../../../../services/api'
 import { CartItem } from '../../../../store/reducers/cart'
-import { on } from 'events'
+
 type Props = CardapioItem & {
   setIsActive: (value: boolean) => void
   putOnCart: (value: CartItem) => void
   onOffCart: boolean
+}
+
+const formatCurrencyBRL = (Value: number) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+    minimumFractionDigits: 2
+  }).format(Value)
 }
 
 const CardFood = ({
@@ -77,7 +85,7 @@ const CardFood = ({
                   })
               }}
             >
-              Adicionar ao carrinho - R$ {preco}
+              Adicionar ao carrinho - {formatCurrencyBRL(Number(preco))}
             </button>
           </div>
         </ModalContent>

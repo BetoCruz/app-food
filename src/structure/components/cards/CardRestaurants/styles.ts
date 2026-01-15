@@ -11,6 +11,8 @@ export const CardRestauranteContainer = styled.div`
   border: 1px solid ${cores.salmon};
   background-color: #fff;
   color: ${cores.salmon};
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
 
   div:nth-child(1) {
     // position: absolute;

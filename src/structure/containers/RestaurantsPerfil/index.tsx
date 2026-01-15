@@ -38,7 +38,6 @@ const RestaurantsPerfil = ({ headerActiveCart, comidas }: Props) => {
       })
     )
   }
-  console.log(`Componente restaurantsPerfil:___${comidas}`)
 
   return (
     <ListaDeElementosBlock>
@@ -53,7 +52,7 @@ const RestaurantsPerfil = ({ headerActiveCart, comidas }: Props) => {
               id={item.id}
               nome={item.nome}
               descricao={item.descricao}
-              foto={item.foto}
+              foto={item.foto || ''}
               preco={item.preco}
               porcao={item.porcao}
             />

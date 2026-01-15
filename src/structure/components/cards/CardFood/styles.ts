@@ -105,7 +105,6 @@ export const ModalContent = styled.div`
     align-items: flex-start;
     gap: 14px;
 
-
     padding: 16px;
     color: ${cores.branca};
 
@@ -129,7 +128,6 @@ export const ModalContent = styled.div`
       font-family: 'Roboto', sans-serif;
       font-weight: bold;
       font-size: 14px;
-    } ;
     }
   }
 `

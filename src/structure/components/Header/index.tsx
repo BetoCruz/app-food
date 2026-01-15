@@ -3,6 +3,8 @@ import imgLogo from '../../../assets/imagesEfood/logo.png'
 import { useSelector } from 'react-redux'
 import { RootReducer } from '../../../store'
 import { RestInfos } from '../../../services/api'
+import { useDispatch } from 'react-redux'
+import { open } from '../../../store/reducers/cart'
 export type Props =
   | {
       isHome: true
@@ -16,7 +18,11 @@ export type Props =
     }
 
 const Header = (props: Props) => {
+  const dispach = useDispatch()
   const { items } = useSelector((state: RootReducer) => state.cart)
+  const handleToggleCart = () => {
+    dispach(open())
+  }
   return (
     <HeaderBlock>
       <>
@@ -46,7 +52,9 @@ const Header = (props: Props) => {
                     //   if (props.toggleHeaderCart) {
                     //     props.toggleHeaderCart(true)
                     //   }
-                    // }}
+                    onClick={() => {
+                      handleToggleCart()
+                    }}
                   >
                     {' '}
                     {items.length} produto(s) no carrinho

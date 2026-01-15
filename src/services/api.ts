@@ -24,7 +24,8 @@ export type RestInfos = {
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://api-ebac.vercel.app/api/efood'
+    // baseUrl: 'https://api-ebac.vercel.app/api/efood'
+    baseUrl: 'https://fake-api-havokk.vercel.app/api/efood'
   }),
   endpoints: (builder) => ({
     getFeaturedRestaurants: builder.query<RestInfos[], void>({
