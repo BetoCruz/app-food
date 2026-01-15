@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import imgHeader from '../../../assets/imagesEfood/Vector.png'
-import imgHeaderHero from '../../../assets/imagesEfood/pratos/la_dolce_vita_trattoria_2.png'
 import { cores } from '../../../styles/styles'
 import { Link } from 'react-router-dom'
 

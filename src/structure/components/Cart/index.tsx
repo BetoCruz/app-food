@@ -84,7 +84,7 @@ const Cart = ({ isActive, toggleCart }: Props) => {
                     <h3>{formatCurrencyBRL(item.preco || 0)}</h3>
                   </CardItemTitle>
                   <img
-                    onClick={() => removeItemCart(item.id!)}
+                    onClick={() => removeItemCart(item?.id || 0)}
                     src={lataDeLixo}
                     alt=""
                   />
